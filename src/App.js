@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
-import logo2 from './Age_of_Empires_2.png';
+import logo2 from './dungeons-dragons.png';
 import './App.css';
 import axios from 'axios';
 
@@ -20,10 +20,11 @@ class App extends Component {
   }  
 
   handlerButton = () => {
-    var civilization = this.state.value;   
+    var monster = this.state.value;   
 
-    axios.get('https://age-of-empires-2-api.herokuapp.com/api/v1/civilization/' + civilization).then( res => {
-      
+    axios.get('https://www.dnd5eapi.co/api/monsters/' + monster)
+        .then( res => {
+        console.log(res.data);
         this.setState({
           response: res.data,
           estado: true
@@ -39,11 +40,12 @@ if(this.state.estado !== true){
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo2} /*className="App-logo"*/ alt="logo" />
+        <img src={logo2} /*className="App-logo"*/ alt="logo" width="500" />
       <div>
       <form>
         <label>
-          <p>Indicar Civilización</p>
+          <p class="titulo">Indicar Monstruo</p>
+          <p class="ejemplos">Ejemplos: aboleth, acolyte, adult-black-dragon, giant-elk y nightmare</p>
           <input type="text" name="name" onChange={this.handlerText.bind(this)}/>
         </label>
         <input type="button" value="Buscar" onClick={this.handlerButton.bind(this)}/>
@@ -56,21 +58,23 @@ if(this.state.estado !== true){
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo2} /*className="App-logo"*/ alt="logo" />
+        <img src={logo2} /*className="App-logo"*/ alt="logo" width="500" />
       <div>
       <form>
         <label>
-        <p>Indicar Civilización</p>
+        <p class="titulo">Indicar Monstruo</p>
+        <p class="ejemplos">Ejemplos: aboleth, acolyte, adult-black-dragon, giant-elk y nightmare</p>
           <input type="text" name="name" onChange={this.handlerText.bind(this)}/>
         </label>
         <input type="button" value="Buscar" onClick={this.handlerButton.bind(this)}/>
       </form>
       </div>
       <div className="App-box">
-        <p>Civilization: {this.state.response.name}</p>
-        <p>Army Type: {this.state.response.army_type}</p>
-        <p>Expansion: {this.state.response.expansion}</p>
-        <p>Team Bonus: {this.state.response.team_bonus}</p>
+        <p>Name: {this.state.response.name}</p>
+        <p>Size: {this.state.response.size}</p>
+        <p>Type: {this.state.response.type}</p>
+        <p>Alignment: {this.state.response.alignment}</p>
+        <p>Hit Points: {this.state.response.hit_points}</p>
       </div>
       </header>
     </div>

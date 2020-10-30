@@ -7,6 +7,17 @@
   pointer-events: none;
 }
 
+.ejemplos {
+  color: gray;
+  font-size: 0.6em;
+}
+
+.titulo {
+  color: #bb0208;
+  font-weight: bold;
+  
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -14,7 +25,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #3a3d42;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
